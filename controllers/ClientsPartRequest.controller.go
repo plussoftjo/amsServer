@@ -2,11 +2,10 @@
 package controllers
 
 import (
-	"fmt"
 	"server/config"
 	"server/models"
 
-	// "strconv"
+	"strconv"
 	"strings"
 
 	"net/http"
@@ -70,8 +69,8 @@ func IndexClientsPartRequestForSupplier(c *gin.Context) {
 	var carsMakeIDList []string
 	// NOW APPEND THE INT WITH CONVERT IT TO THE STRING TO LIST
 	for _, carMakeID := range carMakesIDs {
-		// carsMakeIDList = append(carsMakeIDList, strconv.FormatInt(carMakeID, 10))
-		fmt.Println(carMakeID)
+		carsMakeIDList = append(carsMakeIDList, strconv.FormatInt(carMakeID, 10))
+		// fmt.Println(carMakeID)
 	}
 
 	// NOW MAKE IT STRING

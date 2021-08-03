@@ -116,8 +116,13 @@ func StoreSupplierPersonalDetails(c *gin.Context) {
 
 	config.DB.Save(&user)
 
+	var User models.User
+
+	config.DB.Preload("Service").Preload("Country").Where("id = ?", supplierPersonalDetails.UserID).First(&User)
+
 	c.JSON(200, gin.H{
 		"supplierPersonalDetails": supplierPersonalDetails,
+		"user":                    User,
 	})
 }
 

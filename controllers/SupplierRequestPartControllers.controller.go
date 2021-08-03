@@ -2,12 +2,11 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"server/config"
 	"server/models"
 
-	// "strconv"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -98,8 +97,8 @@ func IndexSupplierRequestPartForSuppliers(c *gin.Context) {
 	var carsMakeIDList []string
 	// NOW APPEND THE INT WITH CONVERT IT TO THE STRING TO LIST
 	for _, carMakeID := range carMakesIDs {
-		// carsMakeIDList = append(carsMakeIDList, strconv.FormatInt(carMakeID, 10))
-		fmt.Println(carMakeID)
+		carsMakeIDList = append(carsMakeIDList, strconv.FormatInt(carMakeID, 10))
+		// fmt.Println(carMakeID)
 	}
 
 	// NOW MAKE IT STRING
@@ -112,8 +111,8 @@ func IndexSupplierRequestPartForSuppliers(c *gin.Context) {
 
 	var carFuelsIDLIST []string
 	for _, fuelID := range supplierSpecialty.FuelsIDs {
-		// carFuelsIDLIST = append(carFuelsIDLIST, strconv.FormatInt(fuelID, 10))
-		fmt.Println(fuelID)
+		carFuelsIDLIST = append(carFuelsIDLIST, strconv.FormatInt(fuelID, 10))
+		// fmt.Println(fuelID)
 	}
 	carFuelIDsString := strings.Join(carFuelsIDLIST, ",")
 

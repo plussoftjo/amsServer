@@ -7,7 +7,9 @@ import (
 
 // SupplierRequestPartWithDetails ..
 func SupplierRequestPartWithDetails(db *gorm.DB) *gorm.DB {
-	return db.Preload("MainFactory").Preload("CarMake").Preload("User").Preload("TakenOffer", func(db *gorm.DB) *gorm.DB {
+	return db.Preload("MainFactory").Preload("CarMake").Preload("User", func(db *gorm.DB) *gorm.DB {
+		return db.Preload("SupplierPersonalDetails")
+	}).Preload("TakenOffer", func(db *gorm.DB) *gorm.DB {
 		return db.Preload("User", func(db *gorm.DB) *gorm.DB {
 			return db.Preload("SupplierPersonalDetails")
 		})

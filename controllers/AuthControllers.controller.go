@@ -332,7 +332,7 @@ func AppLoginController(c *gin.Context) {
 	}
 
 	var User models.User
-	config.DB.Preload("Country").Where("id = ?", user.ID).First(&User)
+	config.DB.Preload("Country").Preload("Service").Where("id = ?", user.ID).First(&User)
 
 	// Supplier Things
 	var SupplierSpecialty models.SupplierSpecialty
